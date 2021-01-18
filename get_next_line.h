@@ -6,7 +6,7 @@
 /*   By: chandsom <chandsom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 20:41:32 by chandsom          #+#    #+#             */
-/*   Updated: 2021/01/19 00:20:16 by chandsom         ###   ########.fr       */
+/*   Updated: 2021/01/19 00:42:26 by chandsom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strlen_lb(char *s);
 void	rewrite_save(char **save, int i);
-int		find_lb_in_save(char *save, char **line);
+int		find_lb_in_save(char **save, char **line);
 
 #endif

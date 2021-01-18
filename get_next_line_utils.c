@@ -6,7 +6,7 @@
 /*   By: chandsom <chandsom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 22:12:08 by chandsom          #+#    #+#             */
-/*   Updated: 2021/01/17 19:30:33 by chandsom         ###   ########.fr       */
+/*   Updated: 2021/01/19 02:03:45 by chandsom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,18 @@ char		*ft_strdup(const char *s1)
 	char	*dst;
 
 	i = 0;
-	if (!(dst = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1))))
+	if (!s1)
+	{
+		printf("1ft_strdup\n");
+		return(NULL);		
+	}
+	printf("2 ft_strdup %s\n", s1);
+	dst = (char *)malloc(sizeof(char) * (ft_strlen((char *)s1) + 1));
+	printf("2 ft_strdup %s\n", s1);
+	if (!(dst))
 		return (NULL);
+	printf("ft_strdup\n");
+
 	while (s1[i])
 	{
 		dst[i] = s1[i];
@@ -86,7 +96,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!(sub = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < len && s[i] != '\0')
 	{
 		sub[i] = s[start + i];
 		i++;
