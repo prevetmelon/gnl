@@ -6,7 +6,7 @@
 /*   By: chandsom <chandsom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 22:12:08 by chandsom          #+#    #+#             */
-/*   Updated: 2021/01/19 02:03:45 by chandsom         ###   ########.fr       */
+/*   Updated: 2021/01/22 00:54:08 by chandsom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t		ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -24,8 +24,10 @@ size_t		ft_strlen(const char *s)
 
 char		*ft_strchr(char *s, int c)
 {
-	size_t count;
+	int count;
+	char	c;
 
+	c = '\n';
 	count = 0;
 	while (s[count])
 	{
@@ -33,13 +35,13 @@ char		*ft_strchr(char *s, int c)
 			return (&(s[count]));
 		count++;
 	}
-	return (NULL);
+	return (0);
 }
 
 char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*dst;
-	size_t			i;
+	unsigned int	i;
 
 	i = 0;
 	if (!s1 || !s2)
@@ -61,18 +63,8 @@ char		*ft_strdup(const char *s1)
 	char	*dst;
 
 	i = 0;
-	if (!s1)
-	{
-		printf("1ft_strdup\n");
-		return(NULL);		
-	}
-	printf("2 ft_strdup %s\n", s1);
-	dst = (char *)malloc(sizeof(char) * (ft_strlen((char *)s1) + 1));
-	printf("2 ft_strdup %s\n", s1);
-	if (!(dst))
+	if (!(dst = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1))))
 		return (NULL);
-	printf("ft_strdup\n");
-
 	while (s1[i])
 	{
 		dst[i] = s1[i];
@@ -82,39 +74,3 @@ char		*ft_strdup(const char *s1)
 	return (dst);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	unsigned int	i;
-	unsigned int	len_s;
-	char			*sub;
-
-	if (!s)
-		return (NULL);
-	len_s = ft_strlen(s);
-	if (len_s < start)
-		return (ft_strdup(""));
-	if (!(sub = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	i = 0;
-	while (i < len && s[i] != '\0')
-	{
-		sub[i] = s[start + i];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
-}
-
-int			ft_strlen_lb(char *s)
-{
-	int i;
-
-	i = 0;
-	if (!s)
-		return (-1);
-	if (ft_strchr(s, '\n') == NULL)
-		return (-1);
-	while (s[i] && s[i] != '\n')
-		i++;
-	return (i);
-}
